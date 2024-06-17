@@ -48,13 +48,14 @@ main {
 #form {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
 }
 
 input {
-  width: 500px;
+  width: calc(100% - 26%);
   min-height: 4.1rem;
   max-height: 8rem;
   font-size: 1rem;
@@ -75,7 +76,7 @@ input:focus {
   background: rgb(0, 200, 255);
   color: black;
   border: none;
-  padding: 1.1rem 2.6rem;
+  padding: 1.1rem 3rem;
   border: 2px solid rgb(0, 200, 255);
   border-radius: 5px;
   transition: .3s all linear;
