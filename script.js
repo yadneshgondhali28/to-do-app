@@ -35,12 +35,21 @@ let formValidation = () => {
 
 // add data to local storage
 function addDataToLocalStorage(data) {
-  return localStorage.setItem("todo", JSON.stringify(data));
+  try {
+    return localStorage.setItem("todo", JSON.stringify(data));
+  } catch (error) {
+    console.error("Error writing to local storage", error)
+  }
 }
 
 // get data from local storage
 function getLocalStorageData() {
-  return JSON.parse(localStorage.getItem("todo")) || [];
+  try {
+    return JSON.parse(localStorage.getItem("todo"));
+  } catch (error) {
+    console.error("Error reading from local storage", error)
+    return [];
+  }
 }
 
 
