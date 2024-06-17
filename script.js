@@ -31,14 +31,22 @@ let formValidation = () => {
   }
 };
 
+function showNotification() {
 
+}
 
 // add data to local storage
 function addDataToLocalStorage(data) {
   try {
-    return localStorage.setItem("todo", JSON.stringify(data));
+    localStorage.setItem("todo", JSON.stringify(data));
   } catch (error) {
-    console.error("Error writing to local storage", error)
+    if (error.name === 'QuotaExceededError') {
+      console.error("Storage limit exceeded", error);
+    } else if (error.name === 'SecurityError') {
+      console.error("Local storage is disabled or unavailable", error);
+    } else {
+      console.error("Error writing to local storage", error);
+    }
   }
 }
 
@@ -47,7 +55,13 @@ function getLocalStorageData() {
   try {
     return JSON.parse(localStorage.getItem("todo"));
   } catch (error) {
-    console.error("Error reading from local storage", error)
+    if (error.name === 'SyntaxError') {
+      console.error("Error parsing JSON from local storage", error);
+    } else if (error.name === 'SecurityError') {
+      console.error("Local storage is disabled or unavailable", error);
+    } else {
+      console.error("Error reading from local storage", error);
+    }
     return [];
   }
 }
