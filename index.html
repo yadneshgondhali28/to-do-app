@@ -23,11 +23,9 @@
     />
   </head>
   <body>
-    <header>
+    <main>
       <!-- main heading -->
       <h1 class="main-heading">To-do App</h1>
-    </header>
-    <main>
       <!-- container -->
       <section class="container">
         <!-- left -->
@@ -39,16 +37,16 @@
               name="user-input"
               id="input"
               placeholder="add your task here"
+              aria-label="Task input"
             />
-            <button class="add-btn" type="submit">Add</button>
+            <button class="add-btn" type="submit">Add Task</button>
           </form>
+          <div class="msg"></div>
         </section>
-
-        <div id="msg"></div>
 
         <!-- right -->
         <section class="bottom">
-          <h2>Your tasks</h2>
+          <h2>Your todo tasks</h2>
           <div id="task-container"></div>
         </section>
       </section>
