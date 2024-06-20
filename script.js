@@ -1,4 +1,3 @@
-
 let form = document.getElementById("form"); //form element
 let input = document.getElementById("input"); // input element
 const button = document.querySelector(".add-btn");
