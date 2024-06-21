@@ -18,10 +18,8 @@ form.addEventListener("submit", (e) => {
 
 // validating form
 let formValidation = () => {
-  const messageValue = "Task field cannot be empty";
-  const messageType = "error";
   if (input.value === "") {
-    showNotification(message = messageValue, type = messageType);
+    showNotification("Task field cannot be empty", "error");
   } else {
     if (editIndex !== null) {
       updateTask();
@@ -93,9 +91,7 @@ let acceptData = () => {
   addDataToLocalStorage(data);
   createTasks();
   resetForm();
-  const messageValue = "Task has been created successfully.";
-  const messageType = "success";
-  showNotification(message = messageValue, type = messageType);
+  showNotification("Task has been created successfully.", "success");
 };
 
 // creating tasks
@@ -121,6 +117,7 @@ let createTasks = () => {
   checkboxes.forEach(checkbox => {
     checkbox.addEventListener('change', handleCheckboxChange);
   });
+
 };
 
 // Handle checkbox change
@@ -153,9 +150,7 @@ function deleteTask(index, notify = true) {
   data.splice(index, 1);
   addDataToLocalStorage(data);
   createTasks();
-  const messageValue = "Task has been deleted successfully.";
-  const messageType = "success";
-  showNotification(message = messageValue, type = messageType, notify);
+  showNotification("Task has been deleted successfully.", "success", notify);
 }
 
 // edit task
@@ -170,9 +165,7 @@ function updateTask() {
   data[editIndex].text = input.value;
   addDataToLocalStorage(data);
   createTasks();
-  const messageValue = "Task has been updated successfully.";
-  const messageType = "success";
-  showNotification(message = messageValue, type = messageType);
+  showNotification("Task has been updated successfully.", "success");
 }
 
 document.addEventListener("DOMContentLoaded", createTasks());

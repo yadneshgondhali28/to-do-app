@@ -38,7 +38,7 @@ main {
 
 .top {
   width: 100%;
-  padding: 1rem 1.4rem 1.4rem;
+  padding: 1rem 1.4rem 1rem;
 }
 
 #form {
@@ -46,7 +46,7 @@ main {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 1rem;
-  margin: 0 0 1.4rem;
+  margin: 0 0 1rem;
 }
 
 input[type="text"] {
