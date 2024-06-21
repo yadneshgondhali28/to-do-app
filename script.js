@@ -105,8 +105,8 @@ let createTasks = () => {
           <p>${x.text}</p>
         </div>
         <span class="icon-options">
-          <i onClick="editTask(${y})"  class="fa-solid fa-pen-to-square edit-icon"></i>
-          <i onClick="deleteTask(${y})" class="fa-solid fa-trash delete-icon"></i>
+          <i class="fa-solid fa-pen-to-square edit-icon" data-index="${y}"></i>
+          <i class="fa-solid fa-trash delete-icon" data-index="${y}"></i>
         </span>
       </article>
   `);
@@ -118,6 +118,16 @@ let createTasks = () => {
     checkbox.addEventListener('change', handleCheckboxChange);
   });
 
+  // Adding event listeners to edit icons
+  const editIcons = document.querySelectorAll(".edit-icon");
+  editIcons.forEach(editIcon => {
+    editIcon.addEventListener("click", editTask);
+  })
+  // Adding event listeners to delete icons
+  const deleteIcons = document.querySelectorAll(".delete-icon");
+  deleteIcons.forEach(deleteIcon => {
+    deleteIcon.addEventListener("click", deleteTask);
+  })
 };
 
 // Handle checkbox change
@@ -128,14 +138,15 @@ function handleCheckboxChange(event) {
   const taskText = checkbox.nextElementSibling;
   if (checkbox.checked) {
     article.classList.add("task-complete");
-    taskText.classList.add("task-completed");
+    taskText.classList.add("task-completed-text");
     deleteTimeouts[index] = setTimeout(() => {
-      deleteTask(index, notify = false);
+      deleteTask(event, notify = false);
+      showNotification("Congratulations! you have completed a task.", "success");
     }, 3000);
   } else {
     clearTimeout(deleteTimeouts[index]);
     article.classList.remove("task-complete");
-    taskText.classList.remove("task-completed");
+    taskText.classList.remove("task-completed-text");
   }
 };
 
@@ -146,15 +157,20 @@ let resetForm = () => {
 }
 
 // delete task
-function deleteTask(index, notify = true) {
-  data.splice(index, 1);
-  addDataToLocalStorage(data);
-  createTasks();
+function deleteTask(event, notify = true) {
+  const deleteIcon = event.target;
+  const index = deleteIcon.getAttribute("data-index");
+  data.splice(index, 1); // remove the element at partcular index.
+  addDataToLocalStorage(data); // update local storage.
+  createTasks(); // create tasks with updated local storage.
+  // and when the task is created notify the user about it w/t a message.
   showNotification("Task has been deleted successfully.", "success", notify);
 }
 
 // edit task
-function editTask(index) {
+function editTask(event) {
+  const editIcon = event.target;
+  const index = editIcon.getAttribute("data-index");
   input.value = data[index].text;
   editIndex = index;
   button.innerText = "Update Task";
