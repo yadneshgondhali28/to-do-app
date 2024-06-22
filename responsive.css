@@ -1,0 +1,92 @@
+@media only screen and (max-width:600px) {
+  .main-heading {
+    font-size: 1.8rem;
+  }
+
+  #form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+  }
+
+  input[type="text"] {
+    width: 80%;
+  }
+
+  .add-btn {
+    width: 133px;
+    font-size: 1rem;
+    padding: 1.125rem 0;
+  }
+
+  .bottom h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .tasks {
+    padding: 1rem;
+  }
+
+  input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+  }
+
+  .task-txt p {
+    width: 300px;
+    max-height: 51px;
+    font-size: 1rem;
+  }
+
+  .edit-icon,
+  .delete-icon {
+    font-size: 1rem;
+  }
+
+}
+
+@media only screen and (max-width:450px) {
+  #form {
+    flex-direction: column;
+  }
+
+  input[type="text"] {
+    width: 90%;
+  }
+
+  .add-btn {
+    padding: 1rem 0;
+  }
+
+  #task-container {
+    padding: 0.6rem;
+    max-height: 410px;
+  }
+
+  .tasks {
+    padding: 1rem 0.8rem;
+  }
+
+  .task-txt p {
+    width: 237px;
+    font-size: 0.9rem;
+    max-height: 46px;
+  }
+}
+
+@media only screen and (max-width:400px) {
+  input[type="text"] {
+    width: 100%;
+  }
+
+  #task-container {
+    padding: 0.3rem;
+  }
+
+  .task-txt p {
+    width: 207px;
+    font-size: 0.9rem;
+  }
+}
